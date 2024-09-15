@@ -50,13 +50,23 @@ app.post('/blogs', async (req, res) => {
 
 // Get all blog posts
 app.get('/blogs', async (req, res) => {
-  try {
-    const blogs = await client.db("simpleBlogDB").collection("blogs").find().toArray();
-    res.status(200).json(blogs);
-  } catch (error) {
-    res.status(500).json({ message: 'Error fetching blog posts' });
-  }
-});
+    try {
+      // Access the MongoDB collection
+      const collection = client.db("simpleBlogDB").collection("blogs");
+  
+      // Fetch the latest 10 blog posts, sorted by date in descending order
+      const blogs = await collection.find()
+        .sort({ date: -1 })  // Sort by date, newest first
+        .limit(10)           // Limit to 10 blog posts
+        .toArray();          // Convert cursor to array
+  
+      // Send the blog posts as JSON
+      res.status(200).json(blogs);
+    } catch (error) {
+      // Handle errors
+      res.status(500).json({ message: 'Error fetching blog posts' });
+    }
+  });  
 
 // Start the server
 app.listen(PORT, () => {
