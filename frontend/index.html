@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Blog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            text-align: center;
+        }
+        .blog-container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .blog {
+            margin-bottom: 20px;
+        }
+        .blog-title {
+            font-size: 24px;
+            color: #333;
+        }
+        .blog-content {
+            font-size: 16px;
+            color: #666;
+        }
+        #newBlogForm {
+            margin-top: 40px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Simple Blog</h1>
+
+    <div class="blog-container" id="blogs"></div>
+
+    <div id="newBlogForm">
+        <h2>Create a new blog</h2>
+        <input type="text" id="title" placeholder="Title" required>
+        <br><br>
+        <textarea id="content" placeholder="Write your blog content here..." rows="5" required></textarea>
+        <br><br>
+        <button onclick="createBlog()">Post Blog</button>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
