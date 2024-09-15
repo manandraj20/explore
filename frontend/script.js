@@ -1,4 +1,4 @@
-const apiUrl = 'http://localhost:5000';
+const apiUrl = 'https://explore-fsrq.onrender.com';
 
 // Function to fetch and display blog posts
 async function fetchBlogs() {
