@@ -11,7 +11,7 @@ app.use(express.json()); // For parsing application/json
 app.use(cors()); // Allow cross-origin requests
 
 // MongoDB Connection
-const uri = "mongodb+srv://manandraj20:manandraj20@simpleblogdb.6td4s.mongodb.net/?retryWrites=true&w=majority&appName=simpleBlogDB";
+const uri = "mongodb+srv://manandraj20:manandraj20@simpleblogdb.6td4s.mongodb.net/?retryWrites=true&w=majority&appName=simpleBlogDB&ssl=true&tls=true";
 const client = new MongoClient(uri, {
   serverApi: {
     version: ServerApiVersion.v1,
