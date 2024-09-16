@@ -68,6 +68,31 @@ app.get('/blogs', async (req, res) => {
     }
   });  
 
+  // Get a single blog post by ID
+app.get('/blogs/:id', async (req, res) => {
+  try {
+
+    const { id } = req.params;
+    console.log(id);
+    // Convert the ID to an ObjectId
+    const { ObjectId } = require('mongodb');
+    const objectId = new ObjectId(id);
+    
+    // Fetch the blog post from the database
+    const blog = await client.db("simpleBlogDB").collection("blogs").findOne({ _id: objectId });
+
+    if (blog) {
+      res.status(200).json(blog);
+    } else {
+ 
+      res.status(404).json({ message: 'Blog post not found' });
+    }
+  } catch (error) {
+
+    res.status(500).json({ message: 'Error fetching the blog post' });
+  }
+});
+
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
